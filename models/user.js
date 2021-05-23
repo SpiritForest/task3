@@ -1,5 +1,7 @@
-module.exports = function(sequelize, DataTypes) {
-    return sequelize.define('user', {
+let UserModel;
+
+const defineUserModel = function(sequelize, DataTypes) {
+    UserModel = sequelize.define('user', {
         full_name: {
             type: DataTypes.STRING,
             allowNull: false
@@ -23,4 +25,19 @@ module.exports = function(sequelize, DataTypes) {
             }
         }
     })
+};
+
+const create = (data) => {
+    return UserModel.create(data);
+};
+
+const findOne = (data) => {
+   return UserModel.findOne(data);
+};
+
+module.exports = {
+    defineUserModel,
+    create,
+    findOne
 }
+
