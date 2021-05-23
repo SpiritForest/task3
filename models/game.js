@@ -1,5 +1,7 @@
-function(sequelize, DataTypes) {
-    return sequelize.define('game', {
+let GameModel;
+
+const defineGameModel = function(sequelize, DataTypes) {
+    GameModel = sequelize.define('game', {
         title: {
             type: DataTypes.STRING(25),
             allowNull: false,
@@ -35,4 +37,17 @@ function(sequelize, DataTypes) {
             allowNull: false
         }
     })
-}
+};
+
+const create = (data) => GameModel.create(data);
+
+const findOne = (data) => GameModel.findOne(data);
+
+const findAll = (data) => GameModel.findAll(data);
+
+module.exports = {
+    defineGameModel,
+    create,
+    findOne,
+    findAll
+};
